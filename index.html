@@ -574,7 +574,7 @@ main
                             </li>
 
                             <li class="nav-li href-products">
-                                <a href="/products">PRODUCTS</a>
+                                <a href="products.html">PRODUCTS</a>
                             </li>
 
                             <li class="nav-li href-contact">
@@ -695,9 +695,15 @@ main
             </div>
 
             <div class="cp-right">
-                <span>Copyright &#64; GREENLAND {{ date('Y') }}. All Rights Reserved.</span>
+                <!-- <span>Copyright &#64; GREENLAND {{ date('Y') }}. All Rights Reserved.</span> -->
+                <span>Copyright &#64; GREENLAND <span id="year"></span>. All Rights Reserved.</span>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+
 </body>
 </html>
