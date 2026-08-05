@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<link rel="icon" href="{{ asset('/images/favicon.png') }}"/>
+<link rel="sitemap" type="application/xml" href="{{ asset('/sitemap.xml') }}">
+<link rel="canonical" href="http://www.greenland2u.com/">
+
+<title>@yield('title', 'Greenland')</title>
+<meta name="description" content="Greenland Malaysia - Discover Greenland products that bringing you total industrial cleaning convenience...">
+
+<meta property="og:type" content="website">
+<meta property="og:image" itemprop="image" content="{{ asset('/images/metacon.png') }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:title" content="@yield('title', 'Greenland')">
+<meta property="og:description" content="Greenland Malaysia - Discover Greenland products that bringing you total industrial cleaning convenience...">
+<meta property="og:url" content="{{ url()->current() }}" />
+
+<!-- Fonts -->
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.cdnfonts.com/css/aoboshi-one" rel="stylesheet">
+
+<!-- Styles -->
+<link href="/css/app.css" rel="stylesheet">
+
+<!-- Scripts -->
+<script src="/js/app.js"></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" defer></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.key === 'i') {
+                event.preventDefault();
+            }
+        });
+
+        window.addEventListener("pageshow", function(event) {
+            var historyTraversal = event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2);
+            if (historyTraversal) {
+                window.location.reload();
+            }
+        });
+
+        $(window).on("resize", resize);
+        resize();
+
+        var url = window.location.href;
+        var activePage = url.split('/')[3];
+        var link = document.getElementsByClassName('nav-li');
+
+        if(activePage == "") {
+            activePage = 'home';
+        }
+
+        $(".href-" + activePage).addClass('active');
+
+        //mobile
+        $('.mobile-nav-toggle button').click(function() {
+            $('.menu-open').toggle();
+            $('.menu-close').toggle();
+            $('.mobile-nav').slideToggle();
+        });
+    });
+
+    function resize() {
+        if($(".navbar").innerHeight() != 0)
+        {
+            $('.main').css("height", window.innerHeight - $("#nav-dropdown").innerHeight() + "px");
+        }else
+        {
+            $('.main').css("height", window.innerHeight - $("#mobile-nav-dropdown").innerHeight() + "px");
+        }
+    }
+    $(window).on("resize", resize);
+    resize();        
+</script>
+@yield('script')
+        
+<style>
+/*  root settings  */
+@media(max-width:1750px)
+{
+    :root
+    {
+        font-size:14px !important;
+    }
+}
+@media(max-width:1400px)
+{
+    :root
+    {
+        font-size:12px !important;
+    }
+}
+@media(max-width:1150px)
+{
+    :root
+    {
+        font-size:12px !important;
+    }
+}
+@media(max-width:992px)
+{
+    :root
+    {
+        font-size:9px !important;
+    }
+}
+@media(min-width: 1440px)
+{
+    .container
+    {
+        max-width: 80%;
+    }
+}
+@font-face
+{
+    font-family: Geologica-Regular;
+    src: url('/fonts/Geologica-Regular.ttf');
+}
+@font-face
+{
+    font-family: Geologica-Medium;
+    src: url('/fonts/Geologica-Medium.ttf');
+}
+@font-face
+{
+    font-family: Geologica-SemiBold;
+    src: url('/fonts/Geologica-SemiBold.ttf');
+}
+@font-face
+{
+    font-family: Geologica-Black;
+    src: url('/fonts/Geologica-Black.ttf');
+}
+@font-face
+{
+    font-family: Copperplate Gothic;
+    src: url('/fonts/Copperplate Gothic.ttf');
+}
+html 
+{
+    scroll-behavior: smooth;
+}
+body
+{
+    font-family: 'Geologica-Medium';
+    user-select: none;
+    -webkit-user-drag: none;
+}
+img
+{
+    user-select: none;
+    -webkit-user-drag: none;
+}
+main
+{
+/*    min-height: 500px;*/
+}
+
+/*  nav header css  */
+.nav-head
+{
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+}
+.navbar-laravel
+{
+    background: #bed741;
+}
+.navbar-nav
+{
+    padding: 1rem;
+}
+.link-nav
+{
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+/*    justify-content: space-evenly;*/
+    justify-content: end;
+    align-items: center;
+}
+.navbar-logo
+{
+    width: 50%;
+}
+.navbar-nav .nav-li
+{
+    margin: 0 2rem;
+}
+.navbar-nav a
+{
+    font-family: 'Geologica-Medium';
+    color: #000;
+    font-size: 1.5rem;
+    padding: 0 !important;
+    white-space: nowrap;
+}
+.navbar-nav a:hover 
+{
+    color: #ffffff;
+    opacity: 0.8;
+    text-decoration: underline;
+    text-decoration-color: #ffffff;
+}
+.navbar-nav .nav-li.active a 
+{
+    color: red;
+}
+
+/*  footer css  */
+.footer {
+    background: #FFFEF7;
+}
+.footer-loop-banner
+{
+    background: red;
+    font-family: 'Geologica-Medium';
+    font-size: 2.5rem;
+    padding: 1rem;
+    width: 100%;
+    height: 6.25rem;
+}
+.loop-banner
+{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+.loop-banner ul
+{
+    display: inline-flex;
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
+}
+.loop-banner li
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 2rem;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+}
+.gap-wall
+{
+    background: #ffffff;
+    align-self: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+.navbar-navfoot
+{
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding-left: 0;
+
+    height: 100%;
+    align-items: center;
+}
+.navbar-navfoot li
+{
+    display: inline-flex;
+}
+.navbar-navfoot a
+{
+    font-family: 'Geologica-Medium';
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: #000000;
+    transition: 0.6s;
+}
+.navbar-navfoot a:hover
+{
+    transition: 0.6s;
+    transform: scale(1.1);
+}
+.navbar-navfoot .nav-li.active a
+{
+    text-decoration: underline;
+}
+.long-wall
+{
+    border-left: 6px solid #000;
+    height: 100%;
+}
+.footer-save-and-green
+{
+    font-family: 'Geologica-Medium';
+    font-size: 3rem;
+    width: 100%;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.cp-right
+{
+    background-color: #000000; 
+    text-align: center;
+    padding: 1rem;
+}
+.cp-right span
+{
+    font-family:'Geologica-Regular';
+    color: #ffffff;
+}
+.loop-banner ul {
+  animation: scroll-left 20s linear infinite;
+}
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* mobile responsive */
+@media(max-width: 1500px) {
+    .navbar-navfoot a {
+        font-size: 1.65rem;
+    }
+    .footer-save-and-green {
+        font-size: 2.5rem;
+    }
+}
+@media(max-width: 1200px) {
+    .navbar-navfoot a {
+        font-size: 1.5rem;
+    }
+    .footer-save-and-green {
+        font-size: 2rem;
+    }
+}
+@media(max-width: 767.5px) {
+    /*  navbar  */
+    .navbar-laravel {
+        padding: 1.5rem;
+    }
+    .mobile-nav-toggle {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 1px;
+    }
+    .mobile-nav-toggle > a > img {
+        width: 30%;
+    }
+    .mobile-nav-toggle button {
+        -webkit-appearance: none;
+        appearance: none;
+        background: none;
+        border: none;
+/*        outline: none;*/
+        cursor: pointer;
+        width: 10%;
+    }
+    .mobile-nav-toggle button:focus {
+        outline: 0px dotted;
+        border-radius: 5px;
+    }
+    .menu-open {
+        width: 100%;
+        transform: scale(0.8);
+    }
+    .menu-close {
+        display: none;
+        width: 100%;
+        transform: scale(0.5);
+    }
+    .mobile-nav {
+        display: none;
+        border-top: 1px solid honeydew;
+    }
+    .mobile-nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 2rem 0 0 0;
+    }
+    .mobile-nav li {
+        padding: 0.5rem;
+    }
+    /*  footer  */
+    .navbar-navfoot.mobile {
+        justify-content: space-evenly;
+        padding-bottom: 2rem;
+    }
+    .long-wall.mobile {
+        width: 100%;
+        border: 1px solid #000;
+    }
+    .footer-save-and-green {
+        padding-top: 2rem;
+    }
+}
+@media(max-width: 576px) {
+    .menu-open {
+        transform: scale(1);
+    }
+    .menu-close {
+        transform: scale(0.6);
+    }
+    .loop-banner li {
+        width: unset;
+    }
+    .gap-wall {
+        width: 15px;
+        height: 15px;
+    }
+}
+@media(max-width: 475px) {
+    .mobile-nav-toggle button {
+        width: 15%;
+    }
+}
+@media(max-width: 300px) {
+    .navbar-navfoot a {
+        font-size: 1.35rem;
+    }
+}
+</style>    
+</head>
+
+<body>
+    <div class="app">
+        <div class="nav-head">
+            <nav class="navbar navbar-expand-md navbar-laravel" id="nav-dropdown">
+                <div class="container">
+
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav">
+                            <a class="navbar-logo d-none d-md-block" href="/">
+                                <img class="w-100" src="/images/logo.png" alt="Greenland2u">
+                            </a>
+                        </ul>
+
+                        <ul class="navbar-nav link-nav">
+                            <li class="nav-li href-home">
+                                <a href="/">HOME</a>
+                            </li>
+
+                            <li class="nav-li href-products">
+                                <a href="/products">PRODUCTS</a>
+                            </li>
+
+                            <li class="nav-li href-contact">
+                                <a href="https://api.whatsapp.com/send/?phone=601173000287" target="_blank">CONTACT US</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="d-block d-md-none">
+                        <div class="mobile-nav-toggle">
+                            <a href="/">
+                                <img src="/images/logo.png" alt="Greenland2u">
+                            </a>
+                            <button class="">
+                                <img class="menu-open" src="images/mobile_nav/menu.png">
+                                <img class="menu-close" src="images/mobile_nav/close.png">
+                            </button>
+                        </div>
+
+                        <div class="mobile-nav">
+                            <ul class="navbar-nav mobile">
+                                <li class="nav-li href-home"><a class="nav-link" href="/">HOME</a></li>
+                                <li class="nav-li href-products"><a class="nav-link" href="/products">PRODUCTS</a></li>
+                                <li class="nav-li href-contact"><a class="nav-link" href="https://api.whatsapp.com/send/?phone=601173000287" target="_blank">CONTACT US</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+
+            
+
+        </div>
+
+        @yield('head')
+        <main>
+            @yield('content')
+        </main>
+
+        <div class="footer">
+            <div class="footer-loop-banner">
+                <div class="loop-banner">
+                    <ul>            
+                        <li>
+                            <span style="color: yellow;">GREENLAND SINCE 2013</span>
+                            <div class="gap-wall"></div>
+                        </li>
+
+                        <li>
+                            <span style="color: yellow;">GREENLAND SINCE 2013</span>
+                            <div class="gap-wall"></div>
+                        </li>
+
+                        <li>
+                            <span style="color: yellow;">GREENLAND SINCE 2013</span>
+                            <div class="gap-wall"></div>
+                        </li>
+
+                        <li>
+                            <span style="color: yellow;">GREENLAND SINCE 2013</span>
+                            <div class="gap-wall"></div>
+                        </li>
+
+                        <li>
+                            <span style="color: yellow;">GREENLAND SINCE 2013</span>
+                            <div class="gap-wall"></div>
+                        </li>
+
+                        <li>
+                            <span style="color: yellow;">GREENLAND SINCE 2013</span>
+                            <div class="gap-wall"></div>
+                        </li>     
+                        <li>
+                            <span style="color: yellow;">GREENLAND SINCE 2013</span>
+                            <div class="gap-wall"></div>
+                        </li>                     
+                    </ul>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-12 col-md-5">
+                        <ul class="navbar-navfoot mobile">
+                            <li class="nav-li href-home" id="href-home">
+                                <a href="/">HOME</a>
+                            </li>
+
+                            <li class="nav-li href-products" id="href-products">
+                                <a href="/products">PRODUCTS</a>
+                            </li>
+
+                            <li class="nav-li href-contact" id="href-contact">
+                                <a href="https://api.whatsapp.com/send/?phone=601173000287" target="_blank">CONTACT US</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-1">
+                        <div class="long-wall mobile"></div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="footer-save-and-green" 
+                        style="font-family: Copperplate Gothic; font-weight: bolder;">
+                            Your Total Industrial <br> Cleaning Convenience
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cp-right">
+                <span>Copyright &#64; GREENLAND {{ date('Y') }}. All Rights Reserved.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
