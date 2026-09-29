@@ -287,7 +287,8 @@
 <header class="navbar" id="navbar">
   <nav class="navbar-inner">
     <a href="#top" aria-label="Greenland home" style="display:flex;align-items:center">
-      <img src="images/logo.png" alt="logo">
+      <img src="images/logo.png" alt="Greenland" height="44" style="height:44px;width:auto;display:block" onerror="this.style.display='none';document.getElementById('nav-logo-fallback').style.display='block'">
+      <svg id="nav-logo-fallback" viewBox="0 0 250 62" width="180" height="44" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
       <!-- <svg viewBox="0 0 250 62" width="180" height="44" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="nl" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0d3128"/><stop offset="50%" stop-color="#228872"/><stop offset="100%" stop-color="#6ee7b7"/></linearGradient>
@@ -298,6 +299,15 @@
         <path d="M 34 38 V 52 H 245" stroke="#132b23" stroke-width="4" stroke-linecap="square"/>
         <text x="44" y="47" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="22" letter-spacing="0.8" fill="#132b23">GREENLAND</text>
       </svg> -->
+        <defs>
+          <linearGradient id="nl" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0d3128"/><stop offset="50%" stop-color="#228872"/><stop offset="100%" stop-color="#6ee7b7"/></linearGradient>
+          <linearGradient id="nr" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#144238"/><stop offset="50%" stop-color="#2ca18c"/><stop offset="100%" stop-color="#a7f3d4"/></linearGradient>
+        </defs>
+        <path d="M 32 40 C 14 36, 2 20, 6 8 C 18 2, 34 12, 34 30 C 34 36, 33 39, 32 40 Z" fill="url(#nl)"/>
+        <path d="M 34 40 C 30 22, 42 4, 56 -2 C 64 8, 62 24, 44 36 C 39 39, 35 40, 34 40 Z" fill="url(#nr)"/>
+        <path d="M 34 38 V 52 H 245" stroke="#132b23" stroke-width="4" stroke-linecap="square"/>
+        <text x="44" y="47" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="22" letter-spacing="0.8" fill="#132b23">GREENLAND</text>
+      </svg>
     </a>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
@@ -624,7 +634,7 @@
           <path d="M 32 40 C 14 36, 2 20, 6 8 C 18 2, 34 12, 34 30 Z" fill="#fff"/>
           <path d="M 34 40 C 30 22, 42 4, 56 -2 C 64 8, 62 24, 44 36 Z" fill="#fff"/>
           <path d="M 34 38 V 52 H 245" stroke="#fff" stroke-width="4" stroke-linecap="square"/>
-          <text x="44" y="47" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="22" letter-spacing="0.8" fill="#fff">GREENLAND</text>
+          <text x="55" y="47" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="22" letter-spacing="0.8" fill="#fff">GREENLAND</text>
         </svg>
         <p class="footer-desc">Premium, plant-based cleaning solutions engineered for the cleanest, coolest, best-performing results — at home and in the workshop.</p>
       </div>
@@ -633,7 +643,7 @@
       <div><h4 class="footer-col-title">Support</h4><div class="footer-col-links"><a href="#">Help centre</a><a href="#">Track order</a><a href="#">Contact us</a></div></div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">Copyright© {{YEAR}} @ Greenland. All rights reserved.</p>
+      <p class="footer-copy">Copyright© <span id="copyright-year">2025</span> @ Greenland. All rights reserved.</p>
       <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a><span class="footer-carbon">Carbon-neutral shipping</span></div>
     </div>
   </div>
@@ -753,6 +763,9 @@
     entries.forEach(function(e){ if(e.isIntersecting){ animateCounter(e.target); counterObserver.unobserve(e.target); } });
   }, {threshold:0.5});
   document.querySelectorAll('.stat-val[data-count]').forEach(function(el){ counterObserver.observe(el); });
+
+  /* ---- Auto-update copyright year ---- */
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
